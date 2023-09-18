@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <title>The Ghost Browser</title>
+    <style>
+        .mydiv{
+            margin-top: 70px;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><b>The Ghost</b> <text class="text-danger"> Browser </text><span class="badge text-bg-primary">Top 20</span></a>
+            <div>
+                <a class="btn btn-info" aria-current="page" href="{{url_for('root')}}">Refresh</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container mydiv">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for i in data %}
+            <div class="col">
+                <div class="card">
+                    <iframe src="https://www.youtube.com/embed/{{ i.video }}" title="YouTube video player"
+                        frameborder="0" class="object-fit-contain"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                    <div class="card-body">
+                        <p class="card-text">{{ i.title }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+</body>
+
+</html>
